@@ -1,0 +1,69 @@
+.header_top {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    background-image: url('../../../../assets/img/pictures/1.jpg');
+    background-position: 50% 0%;
+    -webkit-background-size: 120% auto;
+    background-size: 120% auto;
+    box-shadow: inset 1px -3px 117px 4px rgba(0, 0, 0, 1);
+}
+
+.pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../../../assets/img/bg/subtle_carbon_@2X.png');
+    opacity: .2;
+}
+
+.header_logo {
+    width: 300px;
+    height: 60px;
+    overflow: hidden;
+    opacity: .3;
+}
+
+.menu_logo {
+    overflow: hidden;
+    display: block;
+    height: 50px;
+    width: 240px;
+    opacity: .2;
+    margin-bottom: 17px;
+}
+
+.menu_logo:hover {
+    opacity: .3;
+}
+
+.header_bottom {
+    width: 100%;
+    background: url('../../../../assets/img/bg/dark_mosaic.png');
+    z-index: 1;
+}
+
+.header_nav {
+    height: 70px;
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_list {
+    display: flex;
+    align-items: center;
+}
+
+.menu_item {
+    /*margin-right: 5px;*/
+}
+
+.menu_link.active {
+    background-color: rgba(107, 74, 27, .6)
+}
+
