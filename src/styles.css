@@ -774,6 +774,7 @@ span.user {
 .form_item {
     width: 100%;
     margin-bottom: 25px;
+    position: relative;
 }
 
 .register-form {
@@ -820,6 +821,11 @@ form .btn {
 
 form .btn:hover {
     background-color: rgba(120, 80, 30, .6);
+}
+
+form .btn:disabled {
+    cursor: default;
+    background-color: rgba(68, 65, 62, .6);
 }
 
 label {
@@ -931,6 +937,14 @@ label {
 .error, .success {
     font-size: 15px;
     font-weight: 300;
+    position: absolute;
+    bottom: -23px;
+    left: 0;
+}
+
+.danger {
+    font-size: 15px;
+    font-weight: 300;
 }
 
 .success {
@@ -938,7 +952,7 @@ label {
     opacity: .8;
 }
 
-.error {
+.error, .danger {
     color: red;
     opacity: .8;
 }
