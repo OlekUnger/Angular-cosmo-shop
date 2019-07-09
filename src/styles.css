@@ -925,6 +925,7 @@ label {
 .btn-front {
     color: teal;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .error, .success {

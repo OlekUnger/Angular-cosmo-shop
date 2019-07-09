@@ -1,1 +1,24 @@
-<p>login works!</p>
+<ng-template>
+  <div class="notice">
+
+  </div>
+</ng-template>
+
+
+<div class="auth">
+
+  <div class="flipContainer" [ngClass]="{flip: resetForm}">
+    <div class="flipper">
+
+      <div class="front" id="enter-form">
+        <app-enter-form (onFlip)="onFlip($event)"></app-enter-form>
+      </div>
+
+      <div id="reset-password_form" class="back">
+        <app-reset-password-form (onFlip)="onFlip($event)"></app-reset-password-form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

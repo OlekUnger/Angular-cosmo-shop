@@ -10,17 +10,17 @@
 })();
 
 //поиск
-(function () {
-
-    $('#autocomplete').autocomplete({
-        source: path + 'search',
-        minLength: 1,
-        select: function (event, ui) {
-            window.location = path + '/search/?search=' + encodeURIComponent(ui.item.value);
-        }
-    });
-
-})();
+// (function () {
+//
+//     $('#autocomplete').autocomplete({
+//         source: path + 'search',
+//         minLength: 1,
+//         select: function (event, ui) {
+//             window.location = path + '/search/?search=' + encodeURIComponent(ui.item.value);
+//         }
+//     });
+//
+// })();
 (function () {
     $('.breadcrumbs').find('.breadcrumbs_link:last-child').not('.main_link').attr('href', '#').css('cursor', 'default');
 })();
@@ -47,11 +47,12 @@ $('#errors').dialog({
 });
 
 // форма входа переворот
-(function () {
-    $('.btn-front').click(function () {
-        $('.flipContainer').toggleClass('flip');
-    })
-})();
+// (function () {
+//     $('.btn-front').click(function () {
+//         $('.flipContainer').toggleClass('flip');
+//     })
+// })();
+
 (function () {
     $('.btn-back').click(function () {
         $('.flipContainer').removeClass('flip');

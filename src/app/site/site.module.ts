@@ -5,11 +5,13 @@ import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { HomeComponent } from './home/home.component';
+import {SiteComponent} from './site.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
     declarations: [
-        // SiteComponent,
+        SiteComponent,
         AboutComponent,
         ContactsComponent,
         CatalogComponent,
@@ -17,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     ],
     imports: [
         CommonModule,
-        SiteRoutingModule
+        SiteRoutingModule,
+        SharedModule
     ]
 })
 export class SiteModule {

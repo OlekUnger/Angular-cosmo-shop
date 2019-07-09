@@ -1,1 +1,53 @@
-<p>register works!</p>
+<ng-template>
+  <div class="notice">
+    <h2>Вы зарегистрированы</h2>
+  </div>
+</ng-template>
+
+<div class="register-form" id="register-form">
+
+  <form class="form">
+    <div class="form_header">
+      <h4>Регистрация</h4>
+    </div>
+    <div class="form_item">
+      <label for="name_reg">Имя:
+        <span class="check-icon"></span>
+      </label>
+      <input type="text" name="name_reg" id="name_reg" data-field="name">
+    </div>
+    <div class="form_item">
+      <label for="email_reg"> Email:<span class="check-icon"></span></label>
+      <input class="access" type="text" data-field="email" name="email_reg" id="email_reg">
+    </div>
+    <div class="form_item">
+      <label for="login_reg">Логин:<span class="check-icon"></span></label>
+      <input class="access" type="text" data-field="login" name="login_reg" id="login_reg">
+    </div>
+    <div class="form_item">
+      <label for="password_reg">Пароль:<span class="check-icon"></span></label>
+      <input type="password" name="password_reg" id="password_reg" data-field="password">
+    </div>
+    <div class="form_item">
+      <label for="password_reg2">Повторите пароль:<span class="check-icon"></span></label>
+      <input type="password" name="password_reg2" id="password_reg2">
+    </div>
+
+
+    <div class="form_footer">
+      <div class="message">
+
+
+        <!--<div class="error">-->
+        <!-- if error-->
+        <!--</div>-->
+
+
+      </div>
+
+      <button type="submit" class="btn" name="reg_in">Отправить</button>
+    </div>
+
+  </form>
+</div>
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SiteComponent} from './site.component';
 import {AboutComponent} from './about/about.component';
@@ -9,21 +9,22 @@ import {NotFoundComponent} from '../not-found/not-found.component';
 
 
 const routes: Routes = [
-  {
-    path: '', component: SiteComponent, children: [
-        {path: '', component: HomeComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'contacts', component: ContactsComponent},
-      {path: 'catalog', component: CatalogComponent},
-      {path: '**', component: NotFoundComponent}
-    ]
-  }
+    {
+        path: '', component: SiteComponent, children: [
+            {path: '', component: HomeComponent},
+            {path: 'about', component: AboutComponent},
+            {path: 'contacts', component: ContactsComponent},
+            {path: 'catalog', component: CatalogComponent},
+            // {path: '**', component: NotFoundComponent}
+        ]
+    }
 
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class SiteRoutingModule { }
+export class SiteRoutingModule {
+}
