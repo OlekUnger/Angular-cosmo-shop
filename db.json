@@ -5,6 +5,12 @@
       "login": "unger",
       "password": "123456",
       "email": "asd@asd.ru"
+    },
+    {
+      "login": "unger2",
+      "password": "123456",
+      "email": "test@test.tu",
+      "id": 2
     }
   ]
 }

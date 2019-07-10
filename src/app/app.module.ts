@@ -7,10 +7,12 @@ import {SiteModule} from './site/site.module';
 import {UsersService} from './shared/services/users.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './shared/services/auth.service';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        NotFoundComponent
     ],
     imports: [
         AppRoutingModule,

@@ -1,51 +1,102 @@
-<ng-template>
+<ng-template #notice>
   <div class="notice">
     <h2>Вы зарегистрированы</h2>
+    <h2>можете войти в систему</h2>
   </div>
 </ng-template>
 
-<div class="register-form" id="register-form">
+<div class="register-form" id="register-form" *ngIf="!isRegistered; else notice">
 
-  <form class="form">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form_header">
       <h4>Регистрация</h4>
     </div>
     <div class="form_item">
-      <label for="name_reg">Имя:
-        <span class="check-icon"></span>
-      </label>
-      <input type="text" name="name_reg" id="name_reg" data-field="name">
-    </div>
-    <div class="form_item">
       <label for="email_reg"> Email:<span class="check-icon"></span></label>
-      <input class="access" type="text" data-field="email" name="email_reg" id="email_reg">
+      <input
+          class="access"
+          type="text"
+          id="email_reg"
+          formControlName="email"
+      >
+      <span class="error" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+        <span *ngIf="registerForm.get('email')['errors']['required']">
+          Поле email обязательно
+        </span>
+        <span *ngIf="registerForm.get('email')['errors']['email']">
+          Поле должно быть типа email
+        </span>
+      </span>
     </div>
     <div class="form_item">
       <label for="login_reg">Логин:<span class="check-icon"></span></label>
-      <input class="access" type="text" data-field="login" name="login_reg" id="login_reg">
+      <input
+          class="access"
+          type="text"
+          id="login_reg"
+          formControlName="login"
+      >
+      <span class="error" *ngIf="registerForm.get('login').invalid && registerForm.get('login').touched">
+        <span *ngIf="registerForm.get('login')['errors']['required']">
+          Поле логин обязательно
+        </span>
+        <span *ngIf="registerForm.get('login')['errors']['maxlength']">
+          Не более 15 символов
+        </span>
+        <span *ngIf="registerForm.get('login')['errors']['forbiddenLogin']">
+          Этот логин занят
+        </span>
+      </span>
     </div>
-    <div class="form_item">
-      <label for="password_reg">Пароль:<span class="check-icon"></span></label>
-      <input type="password" name="password_reg" id="password_reg" data-field="password">
-    </div>
-    <div class="form_item">
-      <label for="password_reg2">Повторите пароль:<span class="check-icon"></span></label>
-      <input type="password" name="password_reg2" id="password_reg2">
+    <div  formGroupName="passwords">
+    <!--<div >-->
+      <div class="form_item">
+        <label for="password_reg">Пароль:<span class="check-icon"></span></label>
+        <input
+            type="password"
+            id="password_reg"
+            formControlName="password"
+        >
+        <span class="error" *ngIf="registerForm.get('passwords').get('password').invalid && registerForm.get('passwords').get('password').touched">
+          <span *ngIf="registerForm.get('passwords').get('password')['errors']['required']">
+            Поле пароль обязательно
+          </span>
+          <span *ngIf="registerForm.get('passwords').get('password')['errors']['minlength']">
+            Не менее 6 символов
+          </span>
+        </span>
+      </div>
+      <div class="form_item">
+        <label for="password_reg2">Повторите пароль:<span class="check-icon"></span></label>
+        <input
+            type="password"
+            id="password_reg2"
+            formControlName="conf_password"
+        >
+        <span class="error" *ngIf="registerForm.get('passwords').get('conf_password').invalid && registerForm.get('passwords').get('conf_password').touched">
+          <span *ngIf="registerForm.get('passwords').get('conf_password')['errors']['required']">
+            Поле пароль обязательно
+          </span>
+          <span *ngIf="registerForm.get('passwords').get('conf_password')['errors']['minlength']">
+            Не менее 6 символов
+          </span>
+        </span>
+      </div>
+      <span *ngIf="registerForm.hasError('notSame', 'passwords')">
+            пароли не совпадают
+      </span>
+
     </div>
 
 
     <div class="form_footer">
       <div class="message">
-
-
-        <!--<div class="error">-->
-        <!-- if error-->
-        <!--</div>-->
-
-
+        <div class="message">
+          <span class="{{message.type}}" *ngIf="message.text">{{message.text}}</span>
+        </div>
       </div>
 
-      <button type="submit" class="btn" name="reg_in">Отправить</button>
+      <button type="submit" class="btn" [disabled]="registerForm.invalid">Отправить</button>
     </div>
 
   </form>
