@@ -31,7 +31,9 @@ export class EnterFormComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
             this.activatedRoute.queryParams
                 .subscribe((params: Params) => {
-                    this.showMessage('Можете войти в систему', 'success')
+                    if (params['isRegistered']) {
+                        this.showMessage('Можете войти в систему', 'success')
+                    }
                 })
         );
 
