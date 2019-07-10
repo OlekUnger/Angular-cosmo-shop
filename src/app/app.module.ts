@@ -8,11 +8,13 @@ import {UsersService} from './shared/services/users.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './shared/services/auth.service';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {AdminComponent} from './admin/admin.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        AdminComponent
     ],
     imports: [
         AppRoutingModule,
