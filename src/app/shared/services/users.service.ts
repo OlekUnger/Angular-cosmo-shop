@@ -27,6 +27,19 @@ export class UsersService {
             );
     }
 
+    getUserByEmail(email: string): Observable<any> {
+        return this.http.get<User>(`${UsersService.url}/users.json`)
+            .pipe(map(users => {
+                    if (!users) {
+                        return [];
+                    } else {
+                        let key =  Object.keys(users).filter(key => users[key]['email'] === email)[0];
+                        return users[key];
+                    }
+                })
+            );
+    }
+
     createNewUser(user: User): Observable<User> {
         return this.http.post<User>(`${UsersService.url}/users.json`, user);
     }

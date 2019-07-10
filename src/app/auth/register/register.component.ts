@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     this.message = new Message('', 'error');
 
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email], this.forbiddenEmail.bind(this)],
       login: ['', [Validators.required, Validators.maxLength(15)], this.forbiddenLogin.bind(this)],
       passwords: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
@@ -59,6 +59,19 @@ export class RegisterComponent implements OnInit {
           })
     })
   }
+
+    private forbiddenEmail(control: FormControl): Promise<any> {
+        return new Promise((resolve, reject)=>{
+            this.usersService.getUserByEmail(control.value)
+                .subscribe((user: User)=>{
+                    if(user) {
+                        resolve({forbiddenEmail: true})
+                    } else {
+                        resolve(null)
+                    }
+                })
+        })
+    }
 
   onSubmit() {
 

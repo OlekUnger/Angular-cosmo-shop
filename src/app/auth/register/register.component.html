@@ -25,6 +25,9 @@
         <span *ngIf="registerForm.get('email')['errors']['email']">
           Поле должно быть типа email
         </span>
+        <span *ngIf="registerForm.get('email')['errors']['forbiddenEmail']">
+          Этот email занят
+        </span>
       </span>
     </div>
     <div class="form_item">
