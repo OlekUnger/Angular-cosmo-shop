@@ -64,7 +64,7 @@ export class EnterFormComponent implements OnInit, OnDestroy {
                             this.showMessage('Неправильный пароль');
                         }
                     } else {
-                        this.showMessage('Такогоо пользователя не существует');
+                        this.showMessage('Такого пользователя не существует');
                     }
                 })
         );
