@@ -27,7 +27,7 @@ export class AuthService {
         return this.isAuthenticated;
     }
 
-    createNewUser(user: User): Observable<User> {
+    register(user: User): Observable<User> {
         return this.http.post<User>(`http://localhost:3000/users`, user)
     }
 

@@ -3,6 +3,6 @@ export class UserModel {
         public login: string,
         public password: string,
         public email?: string,
-        public id?: number
+        public id?: string
     ) {}
 }

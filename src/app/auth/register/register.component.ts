@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
     const {login, passwords: {password}, email} = this.registerForm.value;
     const user = new UserModel(login, password, email);
     this.subscriptions.add(
-        this.authService.createNewUser(user)
+        this.authService.register(user)
             .subscribe((user: User)=>{
               this.isRegistered = true;
               setTimeout(() => {
