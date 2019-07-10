@@ -3,8 +3,8 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/ang-cosmo-shop'));
+app.use(express.static(__dirname + '/dist/ungers-cosmo-shop'));
 app.get('/*', (req,res)=>{
-  res.sendFile(path.resolve(__dirname, 'dist/ang-cosmo-shop/index.html'))
+  res.sendFile(path.resolve(__dirname, 'dist/ungers-cosmo-shop/index.html'))
 })
 app.listen(process.env.PORT || 8080);
