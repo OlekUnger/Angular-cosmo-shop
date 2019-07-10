@@ -14,31 +14,21 @@ export class UsersService {
     constructor(private http: HttpClient) {
     }
 
-    getUserByLogin(login: string): Observable<any> {
+
+    getUserByField(value: string, field: string): Observable<any> {
         return this.http.get<User>(`${UsersService.url}/users.json`)
             .pipe(map(users => {
                     if (!users) {
                         return [];
                     } else {
-                        let key =  Object.keys(users).filter(key => users[key]['login'] === login)[0];
+                        let key =  Object.keys(users).filter(key => users[key][field] === value)[0];
                         return users[key];
                     }
                 })
             );
     }
 
-    getUserByEmail(email: string): Observable<any> {
-        return this.http.get<User>(`${UsersService.url}/users.json`)
-            .pipe(map(users => {
-                    if (!users) {
-                        return [];
-                    } else {
-                        let key =  Object.keys(users).filter(key => users[key]['email'] === email)[0];
-                        return users[key];
-                    }
-                })
-            );
-    }
+
 
     createNewUser(user: User): Observable<User> {
         return this.http.post<User>(`${UsersService.url}/users.json`, user);

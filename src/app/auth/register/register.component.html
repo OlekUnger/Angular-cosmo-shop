@@ -25,7 +25,7 @@
         <span *ngIf="registerForm.get('email')['errors']['email']">
           Поле должно быть типа email
         </span>
-        <span *ngIf="registerForm.get('email')['errors']['forbiddenEmail']">
+        <span *ngIf="registerForm.get('email')['errors']['duplicate']">
           Этот email занят
         </span>
       </span>
@@ -45,7 +45,7 @@
         <span *ngIf="registerForm.get('login')['errors']['maxlength']">
           Не более 15 символов
         </span>
-        <span *ngIf="registerForm.get('login')['errors']['forbiddenLogin']">
+        <span *ngIf="registerForm.get('login')['errors']['duplicate']">
           Этот логин занят
         </span>
       </span>
