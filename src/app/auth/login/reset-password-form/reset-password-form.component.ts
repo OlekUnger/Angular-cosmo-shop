@@ -5,16 +5,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
     templateUrl: './reset-password-form.component.html',
 })
 export class ResetPasswordFormComponent implements OnInit {
-    @Output() onFlip = new EventEmitter<boolean>();
 
     constructor() {
     }
 
     ngOnInit() {
-    }
-
-    flip(param: boolean) {
-        this.onFlip.emit(param);
     }
 
 }

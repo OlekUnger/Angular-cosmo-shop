@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         });
     }
 
-    private checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    private checkPasswords(group: FormGroup) {
         let pass = group.get('password').value;
         let confirmPass = group.get('conf_password').value;
 
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     private forbiddenField = (value: string) => (control: FormControl): Promise<any> => {
         return new Promise((resolve, reject) => {
-            this.subscriptions.add(this.usersService.getUserByField(control.value, value)
+            this.subscriptions.add(this.authService.getUserByParam(control.value, value)
                 .subscribe((user: User) => {
                     if (user) {
                         resolve({duplicate: true});
@@ -59,7 +59,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 })
             );
         });
-
     };
 
     onSubmit() {
@@ -75,7 +74,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
                             {queryParams: {isRegistered: true}}
                         );
                     }, 1000);
-
                 })
         );
     }

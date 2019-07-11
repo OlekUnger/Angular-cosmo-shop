@@ -1,14 +1,14 @@
 <div class="auth">
 
-  <div class="flipContainer" [ngClass]="{flip: resetForm}">
+  <div class="flipContainer" [appFlip]="true">
     <div class="flipper">
 
       <div class="front" id="enter-form">
-        <app-enter-form (onFlip)="onFlip($event)"></app-enter-form>
+        <app-enter-form></app-enter-form>
       </div>
 
       <div id="reset-password_form" class="back">
-        <app-reset-password-form (onFlip)="onFlip($event)"></app-reset-password-form>
+        <app-reset-password-form></app-reset-password-form>
       </div>
 
     </div>

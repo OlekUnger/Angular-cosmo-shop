@@ -4,10 +4,12 @@ import {HeaderComponent} from './components/header/header.component';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
+import {FlipDirective} from './directives/flip.directive';
 
 @NgModule({
     declarations: [
-        HeaderComponent
+        HeaderComponent,
+        FlipDirective
     ],
     imports: [
         BrowserModule,
@@ -19,7 +21,8 @@ import {BrowserModule} from '@angular/platform-browser';
     exports: [
         ReactiveFormsModule,
         FormsModule,
-        HeaderComponent
+        HeaderComponent,
+        FlipDirective
     ],
     providers: [],
 

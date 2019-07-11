@@ -12,8 +12,6 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
     templateUrl: './enter-form.component.html'
 })
 export class EnterFormComponent implements OnInit, OnDestroy {
-    @Output() onFlip = new EventEmitter<boolean>();
-
     enterForm: FormGroup;
     message: Message;
     private subscriptions = new Subscription();
@@ -37,7 +35,6 @@ export class EnterFormComponent implements OnInit, OnDestroy {
                 })
         );
 
-
         this.enterForm = new FormGroup({
             login: new FormControl(null, [Validators.required, Validators.maxLength(15)]),
             password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
@@ -55,12 +52,15 @@ export class EnterFormComponent implements OnInit, OnDestroy {
     onSubmit() {
         const formData = this.enterForm.value;
         this.subscriptions.add(
-            this.usersService.getUserByLogin(formData.login)
+            this.authService.getUserByParam(formData.login, 'login')
                 .subscribe((user: User) => {
                     if (user) {
                         if (user.password === formData.password) {
                             this.message.text = '';
                             this.authService.login(user);
+                            if (formData.remember) {
+                                this.authService.remember(user);
+                            }
                             this.router.navigate(['/']);
                         } else {
                             this.showMessage('Неправильный пароль');
@@ -71,10 +71,6 @@ export class EnterFormComponent implements OnInit, OnDestroy {
                 })
         );
 
-    }
-
-    flip(param: boolean) {
-        this.onFlip.emit(param);
     }
 
     ngOnDestroy() {
