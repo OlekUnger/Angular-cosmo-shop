@@ -18,11 +18,12 @@ export class AuthService {
 
     login(user: User) {
         this.isAuthenticated = true;
+        window.sessionStorage.setItem('user',JSON.stringify(user))
     }
 
     logout() {
         this.isAuthenticated = false;
-        window.localStorage.clear();
+        window.sessionStorage.clear();
     }
 
     isLoggedIn(): boolean {
@@ -34,16 +35,14 @@ export class AuthService {
     }
 
     remember(user: User) {
-        window.localStorage.setItem('user', JSON.stringify({user: user.login, id: user.id}));
+        window.localStorage.setItem('user', JSON.stringify({...user, id: user.id}));
     }
 
-    ifRemembered() {
+    loginIfRemembered() {
         let user = window.localStorage.getItem('user');
-        if (user) {
-            this.isAuthenticated = true;
-            return user;
+        if(user) {
+            this.login(JSON.parse(user))
         }
-        return null;
     }
 
     getUserByParam(value: string, param: string): Observable<any> {
