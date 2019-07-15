@@ -3,10 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  templateUrl: './about-page.component.html',
+  styleUrls: ['./about-page.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutPageComponent implements OnInit {
   public headerPic = true;
   public title = 'About';
 

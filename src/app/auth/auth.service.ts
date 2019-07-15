@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../interfaces/user';
+import {User} from '../shared/interfaces/user';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -27,6 +27,10 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
+        let session = window.sessionStorage.getItem('user');
+        if(session) {
+            this.isAuthenticated = true;
+        }
         return this.isAuthenticated;
     }
 
@@ -38,12 +42,12 @@ export class AuthService {
         window.localStorage.setItem('user', JSON.stringify({...user, id: user.id}));
     }
 
-    loginIfRemembered() {
-        let user = window.localStorage.getItem('user');
-        if(user) {
-            this.login(JSON.parse(user))
-        }
-    }
+    // loginIfRemembered() {
+    //     let user = window.localStorage.getItem('user');
+    //     if(user) {
+    //         this.login(JSON.parse(user))
+    //     }
+    // }
 
     getUserByParam(value: string, param: string): Observable<any> {
         return this.http.get<User>(`${AuthService.url}/users.json`)

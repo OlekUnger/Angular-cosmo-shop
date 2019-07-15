@@ -1,43 +1,49 @@
 <div class="header_bottom">
-    <div class="container">
-      <nav class="header_nav">
+  <div class="container">
+    <nav class="header_nav">
 
-        <ul class="menu_list">
-          <li class="menu_item" *ngFor="let nav of navigation">
-            <a class="menu_link" [routerLink]="nav.link"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >{{nav.title}}</a>
+      <ul class="menu_list">
+        <li class="menu_item" *ngFor="let nav of navigation">
+          <a class="menu_link" [routerLink]="nav.link" routerLinkActive="active"
+             [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
+        </li>
+
+      </ul>
+
+      <!--<li class="menu_item">-->
+      <form class="search_form">
+        <div class="form_item">
+          <input type="text" name="search" id="autocomplete" value="" placeholder="Введите запрос">
+          <button type="submit" class="search_btn" name=""></button>
+        </div>
+      </form>
+      <!--</li>-->
+
+      <ul class="menu_list user_menu">
+        <ng-template #isLogged>
+          <p class="user-name">{{user.login}}</p>
+          <li class="menu_item">
+            <a class="menu_link enter-form_btn" (click)="onLogout()">Выйти</a>
           </li>
+        </ng-template>
 
-        </ul>
-
-        <!--<li class="menu_item">-->
-          <form class="search_form">
-            <div class="form_item">
-              <input type="text" name="search" id="autocomplete" value="" placeholder="Введите запрос">
-              <button type="submit" class="search_btn" name=""></button>
-            </div>
-          </form>
-        <!--</li>-->
-
-        <ul class="menu_list user_menu">
-
-
-          <ng-template #authenticated>
-            <p class="user-name">{{user.login}}</p>
-            <li class="menu_item">
-              <a class="menu_link enter-form_btn">Выйти</a>
-            </li>
-          </ng-template>
-
-          <li class="menu_item" *ngIf="!isAuthenticated;else authenticated">
+        <ng-template #isNotLogged>
+          <li class="menu_item">
             <a class="menu_link reg_btn" routerLink="/auth/register" routerLinkActive="active">Регистрация</a>
           </li>
           <li class="menu_item">
             <a class="menu_link enter-form_btn" routerLink="/auth/login" routerLinkActive="active">Войти</a>
           </li>
+        </ng-template>
 
-        </ul>
+        <ng-container *ngFor="let part of objectKeys(config);">
+          <ng-container *ngIf="config[part]">
+            <ng-container [ngTemplateOutlet]="this[part]"></ng-container>
+          </ng-container>
+        </ng-container>
+      </ul>
 
-      </nav>
-    </div>
+    </nav>
   </div>
+</div>
 

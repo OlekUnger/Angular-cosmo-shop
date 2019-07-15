@@ -15,7 +15,6 @@ export class UsersService {
 
     getUser() {
         let user = JSON.parse(window.sessionStorage.getItem('user'));
-
         return user;
     }
 
