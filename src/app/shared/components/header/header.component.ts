@@ -10,7 +10,8 @@ import {
 import {AuthService} from '../../../auth/auth.service';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../interfaces/user';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
     selector: 'app-header',
@@ -20,7 +21,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit, AfterViewInit {
     @ViewChild('isLogged', {static: false}) isLogged: TemplateRef<any>;
     @ViewChild('isNotLogged', {static: false}) isNotLogged: TemplateRef<any>;
-
+    @ViewChild('headerPic', {static: false}) headerPic: TemplateRef<any>;
 
     navigation = [
         {title: 'Главная', link: '/'},
@@ -31,7 +32,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     isAuthenticated = false;
     user: User;
-    config = {};
+    config = {
+        userMenu: {},
+        headerPic: true
+    };
 
     constructor(
         private authService: AuthService,
@@ -39,12 +43,23 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         private router: Router,
         private cd: ChangeDetectorRef
     ) {
+
+        let excludedPaths = ['/catalog', '/auth/register', '/auth/login'];
+
+        this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+            .subscribe((event: NavigationEnd) => {
+                if (excludedPaths.includes(event.url)) {
+                    this.config['headerPic'] = false;
+                } else {
+                    this.config['headerPic'] = true;
+                }
+            });
     }
 
     ngOnInit() {
         this.isAuthenticated = this.authService.isLoggedIn();
-        this.config['isLogged'] =  this.isAuthenticated;
-        this.config['isNotLogged'] = !this.isAuthenticated;
+        this.config.userMenu['isLogged'] = this.isAuthenticated;
+        this.config.userMenu['isNotLogged'] = !this.isAuthenticated;
 
         if (this.isAuthenticated) {
             this.user = this.userService.getUser();
@@ -54,8 +69,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     onLogout() {
         this.authService.logout();
         this.isAuthenticated = this.authService.isLoggedIn();
-        this.config['isNotLogged'] = true;
-        this.config['isLogged'] = false;
+        this.config.userMenu['isNotLogged'] = true;
+        this.config.userMenu['isLogged'] = false;
     }
 
     objectKeys(obj) {
