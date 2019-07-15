@@ -31,6 +31,8 @@ export class EnterFormComponent implements OnInit, OnDestroy {
                 .subscribe((params: Params) => {
                     if (params['isRegistered']) {
                         this.showMessage('Можете войти в систему', 'success')
+                    } else if(params['accessDenied']){
+                        this.showMessage('Необходимо войти в систему', 'error')
                     }
                 })
         );

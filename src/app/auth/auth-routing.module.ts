@@ -4,11 +4,12 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {AuthComponent} from '../shared/components/auth.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
     {
-        path: 'auth', component: AuthComponent, children: [
+        path: 'auth', component: AuthComponent, canActivate: [AuthGuard], children: [
             {path: '', redirectTo: 'login', pathMatch: 'full'},
             {path: 'register', component: RegisterComponent},
             {path: 'login', component: LoginComponent},

@@ -6,6 +6,7 @@ import {AuthComponent} from '../shared/components/auth.component';
 import {AuthRoutingModule} from './auth-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {LoginModule} from './login/login.module';
+import {AuthGuard} from './auth.guard';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {LoginModule} from './login/login.module';
         AuthRoutingModule,
         LoginModule,
         SharedModule
-    ]
+    ],
+    providers: [AuthGuard]
 })
 export class AuthModule {
 }

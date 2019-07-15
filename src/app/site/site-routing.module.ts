@@ -7,6 +7,7 @@ import {ContactsPageComponent} from './contacts-page/contacts-page.component';
 // import {CatalogComponent} from './catalog/catalog.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
+import {AuthGuard} from '../auth/auth.guard';
 
 
 const routes: Routes = [
