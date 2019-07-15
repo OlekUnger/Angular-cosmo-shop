@@ -43,10 +43,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.isAuthenticated = this.authService.isLoggedIn();
-        this.config = {
-            isLogged: this.isAuthenticated,
-            isNotLogged: !this.isAuthenticated
-        };
+        this.config['isLogged'] =  this.isAuthenticated;
+        this.config['isNotLogged'] = !this.isAuthenticated;
+
         if (this.isAuthenticated) {
             this.user = this.userService.getUser();
         }
@@ -54,7 +53,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     onLogout() {
         this.authService.logout();
-        this.isAuthenticated = false;
+        this.isAuthenticated = this.authService.isLoggedIn();
         this.config['isNotLogged'] = true;
         this.config['isLogged'] = false;
     }

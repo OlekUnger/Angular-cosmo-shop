@@ -42,12 +42,9 @@ export class AuthService {
         window.localStorage.setItem('user', JSON.stringify({...user, id: user.id}));
     }
 
-    // loginIfRemembered() {
-    //     let user = window.localStorage.getItem('user');
-    //     if(user) {
-    //         this.login(JSON.parse(user))
-    //     }
-    // }
+    loginIfRemembered() {
+        return JSON.parse(window.localStorage.getItem('user'));
+    }
 
     getUserByParam(value: string, param: string): Observable<any> {
         return this.http.get<User>(`${AuthService.url}/users.json`)

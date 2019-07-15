@@ -35,10 +35,12 @@ export class EnterFormComponent implements OnInit, OnDestroy {
                 })
         );
 
+        let user = this.authService.loginIfRemembered();
+
         this.enterForm = new FormGroup({
-            login: new FormControl(null, [Validators.required, Validators.maxLength(15)]),
-            password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-            remember: new FormControl(false, [])
+            login: new FormControl(this.getField(user, 'login'), [Validators.required, Validators.maxLength(15)]),
+            password: new FormControl(this.getField(user, 'password'), [Validators.required, Validators.minLength(6)]),
+            remember: new FormControl(this.getField(user, 'remember'), [])
         });
     }
 
@@ -47,6 +49,13 @@ export class EnterFormComponent implements OnInit, OnDestroy {
         window.setTimeout(() => {
             this.message.text = '';
         }, 3000);
+    }
+
+    private getField(data, field) {
+        if (data && data.hasOwnProperty(field)) {
+            return data[field];
+        }
+        return '';
     }
 
     onSubmit() {
