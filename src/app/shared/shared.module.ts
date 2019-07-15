@@ -5,11 +5,13 @@ import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {FlipDirective} from './directives/flip.directive';
+import {MomentPipe} from './pipes/moment.pipe';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        FlipDirective
+        FlipDirective,
+        MomentPipe
     ],
     imports: [
         BrowserModule,
@@ -22,7 +24,8 @@ import {FlipDirective} from './directives/flip.directive';
         ReactiveFormsModule,
         FormsModule,
         HeaderComponent,
-        FlipDirective
+        FlipDirective,
+        MomentPipe
     ],
     providers: [],
 
