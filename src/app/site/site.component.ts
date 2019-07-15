@@ -1,7 +1,4 @@
-import {Component, EmbeddedViewRef, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
-
-
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-site',
@@ -10,18 +7,7 @@ import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/r
 })
 export class SiteComponent implements OnInit {
 
-
-    constructor(
-        private router: Router,
-        private activatedRoute: ActivatedRoute,
-        private viewContainerRef: ViewContainerRef) {
-        // this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-        //     .subscribe((event: NavigationEnd) => {
-        //         // console.log(event.url)
-        //         // if (event.url === '/catalog') {
-        //         //     // this.headerPic = false;
-        //         // }
-        //     });
+    constructor() {
     }
 
     ngOnInit() {

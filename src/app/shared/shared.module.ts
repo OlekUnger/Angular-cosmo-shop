@@ -6,12 +6,14 @@ import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {FlipDirective} from './directives/flip.directive';
 import {MomentPipe} from './pipes/moment.pipe';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
         FlipDirective,
-        MomentPipe
+        MomentPipe,
+        SidebarComponent
     ],
     imports: [
         BrowserModule,
